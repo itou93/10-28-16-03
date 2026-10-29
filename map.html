@@ -41,39 +41,38 @@
             <div class="map-overlay">
                 <!-- 1Fのピン群（2箇所） -->
                 <div id="floor-1" class="floor-layer active">
-                    <!-- ★ top(縦) と left(横) の % を書き換えて位置調整するにょん -->
-                    <div id="stamp-a" class="stamp" style="top: 25%; left: 30%;" onclick="openModal('a')"></div>
-                    <div id="stamp-b" class="stamp" style="top: 65%; left: 70%;" onclick="openModal('b')"></div>
+                    <div id="stamp-a" class="stamp" style="top: 17%; left: 36%;" onclick="openModal('a')"></div>
+                    <div id="stamp-b" class="stamp" style="top: 17%; left: 45%;" onclick="openModal('b')"></div>
                 </div>
 
                 <!-- 2Fのピン群（2箇所） -->
                 <div id="floor-2" class="floor-layer">
-                    <div id="stamp-c" class="stamp" style="top: 30%; left: 35%;" onclick="openModal('c')"></div>
-                    <div id="stamp-d" class="stamp" style="top: 60%; left: 65%;" onclick="openModal('d')"></div>
+                    <div id="stamp-c" class="stamp" style="top: 15%; left: 34%;" onclick="openModal('c')"></div>
+                    <div id="stamp-d" class="stamp" style="top: 19%; left: 73%;" onclick="openModal('d')"></div>
                 </div>
 
                 <!-- 3Fのピン群（2箇所） -->
                 <div id="floor-3" class="floor-layer">
-                    <div id="stamp-e" class="stamp" style="top: 35%; left: 40%;" onclick="openModal('e')"></div>
-                    <div id="stamp-f" class="stamp" style="top: 70%; left: 60%;" onclick="openModal('f')"></div>
+                    <div id="stamp-e" class="stamp" style="top: 27%; left: 38%;" onclick="openModal('e')"></div>
+                    <div id="stamp-f" class="stamp" style="top: 17%; left: 54%;" onclick="openModal('f')"></div>
                 </div>
 
                 <!-- 4Fのピン群（2箇所） -->
                 <div id="floor-4" class="floor-layer">
-                    <div id="stamp-g" class="stamp" style="top: 20%; left: 45%;" onclick="openModal('g')"></div>
-                    <div id="stamp-h" class="stamp" style="top: 55%; left: 55%;" onclick="openModal('h')"></div>
+                    <div id="stamp-g" class="stamp" style="top: 15%; left: 39%;" onclick="openModal('g')"></div>
+                    <div id="stamp-h" class="stamp" style="top: 2%; left: 45%;" onclick="openModal('h')"></div>
                 </div>
 
                 <!-- 5Fのピン群（2箇所） -->
                 <div id="floor-5" class="floor-layer">
-                    <div id="stamp-i" class="stamp" style="top: 40%; left: 30%;" onclick="openModal('i')"></div>
-                    <div id="stamp-j" class="stamp" style="top: 40%; left: 70%;" onclick="openModal('j')"></div>
+                    <div id="stamp-i" class="stamp" style="top: 19%; left: 38%;" onclick="openModal('i')"></div>
+                    <div id="stamp-j" class="stamp" style="top: 8%; left: 45%;" onclick="openModal('j')"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 戻るボタン (マップの下に配置) -->
+    <!-- 戻るボタン -->
     <div>
         <a href="index.html" class="btn-back">戻る</a>
     </div>
@@ -96,19 +95,24 @@
     </div>
 
     <script>
-        // 各階2個ずつ、計10個のスタンプIDリストだにょん
+        // 各階2個ずつ、計10個のスタンプIDリスト
         const allStamps = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
 
-        // 各スタンプ画像パスの登録場所だにょん
+        // 各スタンプ画像パスの登録場所
         const stampImages = {
-            'a': '校内画像/1F_A.png',
-            'b': '校内画像/1F_B.png',
-            'c': '', 'd': '', 'e': '',
-            'f': '', 'g': '', 'h': '',
-            'i': '', 'j': ''
+            'a': '校内画像/1f3.png',
+            'b': '校内画像/時計.jpg',
+            'c': '校内画像/2f3.png',
+            'd': '校内画像/食物調理科２.jpg',
+            'e': '校内画像/3f3.png',
+            'f': '校内画像/服デ.jpg',
+            'g': '校内画像/4f2.png',
+            'h': '校内画像/パソコン.jpg',
+            'i': '校内画像/5f(2).png',
+            'j': '校内画像/流通経済.jpg'
         };
 
-        // モーダル表示時の名前登録場所だにょん
+        // モーダル表示時の名前登録場所
         const spotNames = {
             'a': '1F スポットA', 'b': '1F スポットB',
             'c': '2F スポットC', 'd': '2F スポットD',
@@ -123,8 +127,8 @@
         };
 
         // --- 4分割（上下・左右）制御フラグと表示更新 ---
-        let isBottomView = false; // Y軸（上下）
-        let isRightView = false;  // X軸（左右）
+        let isBottomView = false;
+        let isRightView = false;
 
         function updateAreaView() {
             const container = document.getElementById('mapContainer');
@@ -156,7 +160,7 @@
             updateAreaView();
         }
 
-        // --- 手での上下左右スワイプ検出（2Dスワイプ） ---
+        // --- 手での上下左右スワイプ検出 ---
         function setup2DSwipe() {
             let touchStartX = 0, touchStartY = 0;
             let touchEndX = 0, touchEndY = 0;
